@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="表情包素材站 - 海量搞笑可爱沙雕动漫萌宠表情包免费下载" />
+  <title>表情包素材站 - 海量斗图素材免费下载</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="logo">
+        <span class="logo-icon">😂</span>
+        <span class="logo-text">表情包素材站</span>
+      </div>
+      <nav class="header-nav">
+        <a href="#home" class="nav-link active">首页</a>
+        <a href="#collections" class="nav-link">精选合集</a>
+        <a href="#tags" class="nav-link">热门标签</a>
+        <a href="#favorites" class="nav-link nav-fav">
+          <span>🔖</span>
+          <span class="fav-count" id="favNavCount">0</span>
+          <span>我的收藏</span>
+        </a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">
+          <span class="theme-icon-light">☀️</span>
+          <span class="theme-icon-dark">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="hero-title">🔥 海量表情包素材</h1>
+        <p class="hero-subtitle">斗图必备 · 免费下载 · 每日更新 · 一键复制</p>
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="搜索表情名、标签、作者..."
+            autocomplete="off"
+          />
+          <button class="search-clear" id="searchClear" aria-label="清空搜索" style="display:none;">✕</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="filter-section">
+      <div class="container">
+        <div class="tabs-wrapper">
+          <div class="tabs-scroll" id="categoryTabs">
+            <button class="tab-btn active" data-category="all">
+              <span class="tab-icon">📋</span>
+              <span>全部</span>
+            </button>
+            <button class="tab-btn" data-category="funny">
+              <span class="tab-icon">🤣</span>
+              <span>搞笑</span>
+            </button>
+            <button class="tab-btn" data-category="cute">
+              <span class="tab-icon">🥰</span>
+              <span>可爱</span>
+            </button>
+            <button class="tab-btn" data-category="silly">
+              <span class="tab-icon">🤪</span>
+              <span>沙雕</span>
+            </button>
+            <button class="tab-btn" data-category="anime">
+              <span class="tab-icon">🎌</span>
+              <span>动漫</span>
+            </button>
+            <button class="tab-btn" data-category="pet">
+              <span class="tab-icon">🐶</span>
+              <span>萌宠</span>
+            </button>
+            <button class="tab-btn" data-category="roast">
+              <span class="tab-icon">😤</span>
+              <span>怼人</span>
+            </button>
+            <button class="tab-btn" data-category="flirt">
+              <span class="tab-icon">😘</span>
+              <span>撩妹</span>
+            </button>
+            <button class="tab-btn" data-category="panda">
+              <span class="tab-icon">🐼</span>
+              <span>熊猫头</span>
+            </button>
+            <button class="tab-btn" data-category="mushroom">
+              <span class="tab-icon">🍄</span>
+              <span>蘑菇头</span>
+            </button>
+            <button class="tab-btn" data-category="cat">
+              <span class="tab-icon">🐱</span>
+              <span>猫咪</span>
+            </button>
+            <button class="tab-btn" data-category="workplace">
+              <span class="tab-icon">💼</span>
+              <span>职场</span>
+            </button>
+            <button class="tab-btn tab-favorites" data-category="favorites">
+              <span class="tab-icon">🔖</span>
+              <span>收藏夹</span>
+              <span class="fav-badge" id="favTabBadge">0</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="sort-row">
+          <div class="sort-label">排序:</div>
+          <div class="sort-buttons">
+            <button class="sort-btn active" data-sort="newest">🆕 最新</button>
+            <button class="sort-btn" data-sort="hottest">🔥 最热</button>
+            <button class="sort-btn" data-sort="downloads">⬇️ 下载量</button>
+          </div>
+          <div class="result-info">
+            <span id="resultCount">0</span> 个结果
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="collections-section" id="collections">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">✨ 精选合集</h2>
+          <div class="scroll-hint">← 左右滑动浏览 →</div>
+        </div>
+        <div class="collections-scroll" id="collectionsScroll">
+        </div>
+      </div>
+    </section>
+
+    <section class="tags-section" id="tags">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">🏷️ 热门标签</h2>
+        </div>
+        <div class="tag-cloud" id="tagCloud">
+        </div>
+      </div>
+    </section>
+
+    <section class="memes-section">
+      <div class="container">
+        <div class="status-container" id="statusContainer">
+          <div class="loading-state" id="loadingState">
+            <div class="spinner"></div>
+            <p>加载中...</p>
+          </div>
+          <div class="empty-state" id="emptyState" style="display:none;">
+            <div class="empty-icon">😢</div>
+            <h3>没有找到相关表情</h3>
+            <p>试试其他关键词或标签吧</p>
+          </div>
+          <div class="error-state" id="errorState" style="display:none;">
+            <div class="error-icon">⚠️</div>
+            <h3>加载失败</h3>
+            <p id="errorMsg">网络异常，请稍后重试</p>
+            <button class="btn-retry" id="btnRetry">重新加载</button>
+          </div>
+        </div>
+        <div class="meme-grid" id="memeGrid">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <span class="logo-icon">😂</span>
+        <span class="logo-text">表情包素材站</span>
+      </div>
+      <p class="footer-copy">© 2026 表情包素材站 · 仅供学习交流使用</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="回到顶部">
+    <span>⬆️</span>
+  </button>
+
+  <div class="modal" id="detailModal" aria-hidden="true">
+    <div class="modal-mask" data-close="mask"></div>
+    <div class="modal-dialog" role="dialog" aria-modal="true">
+      <button class="modal-close" data-close="btn" aria-label="关闭弹窗">✕</button>
+      <div class="modal-body" id="modalBody">
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
